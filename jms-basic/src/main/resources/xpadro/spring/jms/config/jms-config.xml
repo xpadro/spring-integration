@@ -28,7 +28,6 @@
 	
 	
 	<!-- Destinations -->
-	<!-- la cua que arribarà al receiver sincronitzat (test) -->
 	<bean id="syncTestQueue" class="org.apache.activemq.command.ActiveMQQueue">
 		<constructor-arg value="test.sync.queue"/>
 	</bean>
