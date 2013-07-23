@@ -19,4 +19,8 @@ public class NotificationRegistry {
 	public void registerNotification(Notification notification) {
 		receivedNotifications.add(notification);
 	}
+	
+	public void clear() {
+		receivedNotifications.clear();
+	}
 }
