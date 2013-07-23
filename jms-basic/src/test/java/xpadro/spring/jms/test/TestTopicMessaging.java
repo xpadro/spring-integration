@@ -2,6 +2,7 @@ package xpadro.spring.jms.test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class TestTopicMessaging {
 	@Autowired
 	private NotificationRegistry registry;
 	
+	@Before
+	public void prepareTest() {
+		registry.clear();
+	}
+	
 	@Test
 	public void testTopicSending() throws InterruptedException {
 		Notification notification = new Notification("3", "this is a topic");
@@ -31,8 +37,8 @@ public class TestTopicMessaging {
 		
 		Thread.sleep(2000);
 		
-		assertEquals(3, registry.getReceivedNotifications().size());
+		assertEquals(2, registry.getReceivedNotifications().size());
+		assertEquals("this is a topic", registry.getReceivedNotifications().get(0).getMessage());
 		assertEquals("this is a topic", registry.getReceivedNotifications().get(1).getMessage());
-		assertEquals("this is a topic", registry.getReceivedNotifications().get(2).getMessage());
 	}
 }
