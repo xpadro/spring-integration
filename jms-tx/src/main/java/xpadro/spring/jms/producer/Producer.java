@@ -3,7 +3,6 @@ package xpadro.spring.jms.producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,6 @@ public class Producer {
 	private static Logger logger = LoggerFactory.getLogger(Producer.class);
 
 	@Autowired
-	@Qualifier("jmsTemplate")
 	private JmsTemplate jmsTemplate;
 	
 	public void convertAndSendMessage(String destination, Notification notification) {
