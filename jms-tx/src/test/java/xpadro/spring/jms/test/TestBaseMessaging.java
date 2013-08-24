@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jms.core.BrowserCallback;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 
 import xpadro.spring.jms.producer.Producer;
@@ -21,6 +22,7 @@ import xpadro.spring.jms.producer.Producer;
  *
  */
 @ContextConfiguration(locations = {"/xpadro/spring/jms/config/app-config.xml"})
+@DirtiesContext
 public class TestBaseMessaging {
 	protected static final String QUEUE_INCOMING = "incoming.queue";
 	protected static final String QUEUE_DLQ = "ActiveMQ.DLQ";
