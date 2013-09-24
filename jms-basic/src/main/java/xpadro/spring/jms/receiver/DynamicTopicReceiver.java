@@ -6,11 +6,9 @@ import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 
 import org.springframework.jms.support.JmsUtils;
-import org.springframework.stereotype.Component;
 
 import xpadro.spring.jms.model.Notification;
 
-@Component
 public class DynamicTopicReceiver implements MessageListener {
 	private NotificationRegistry registry;
 	
