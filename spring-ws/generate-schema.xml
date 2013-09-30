@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project name="Ant-Generate-Schema-With-Trang" default="generate" basedir=".">
+	<property name="src.dir" location="src" />
+	<property name="trang.dir" location="lib" />
+	<property name="source.dir" location="${src.dir}/main/webapp/WEB-INF/schemas/samples" />
+	<property name="schema.dir" location="${src.dir}/main/webapp/WEB-INF/schemas/xsd" />
+
+	<target name="generate" description="generates order schema">
+		<delete dir="${schema.dir}" />
+		<mkdir dir="${schema.dir}" />
+
+		<java jar="${trang.dir}/trang.jar" fork="true">
+			<arg value="${source.dir}/client-request.xml" />
+			<arg value="${schema.dir}/client-request.xsd" />
+		</java>
+
+		<java jar="${trang.dir}/trang.jar" fork="true">
+			<arg value="${source.dir}/client-response.xml" />
+			<arg value="${schema.dir}/client-response.xsd" />
+		</java>
+	</target>
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

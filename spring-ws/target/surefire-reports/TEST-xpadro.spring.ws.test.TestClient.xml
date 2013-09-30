@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="5.094" errors="0" skipped="0" tests="1" name="xpadro.spring.ws.test.TestClient">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\bin"/>
+    <property name="java.vm.version" value="17.0-b16"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 3"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\environment\development\workspace\spring-ws"/>
+    <property name="java.runtime.version" value="1.6.0_21-b06"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="D:\DOCUME~1\xpadroso\CONFIG~1\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows XP"/>
+    <property name="classworlds.conf" value="D:\environment\development\workspace\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf3132718189169096979.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="D:\bs_proteo_env\runtime\jdk1.6.0_21\bin;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\tools\oraclexe\app\oracle\product\10.2.0\server\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Archivos de programa\Intel\WiFi\bin\;C:\Archivos de programa\ThinkPad\ConnectUtilities;C:\WINDOWS\system32\WindowsPowerShell\v1.0;D:\environment\tools\Git\cmd;D:\environment\development\mongodb-win32-i386-2.4.5\bin;D:\environment\runtime\apache-maven-2.2.1\bin;C:\Python27"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="5.1"/>
+    <property name="user.home" value="D:\Documents and Settings\xpadroso"/>
+    <property name="user.timezone" value="Europe/Paris"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="user.name" value="xpadroso"/>
+    <property name="java.class.path" value="/D:/environment/development/springsource/sts-3.1.0.RELEASE/configuration/org.eclipse.osgi/bundles/557/1/.cp/jars/plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="D:\bs_proteo_env\runtime\jdk1.6.0_21\jre"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.language" value="es"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.6.0_21"/>
+    <property name="java.ext.dirs" value="D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\lib\resources.jar;D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\lib\rt.jar;D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\lib\sunrsasign.jar;D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\lib\jsse.jar;D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\lib\jce.jar;D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\lib\charsets.jar;D:\bs_proteo_env\runtime\jdk1.6.0_21\jre\classes"/>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="maven.home" value="D:\environment\development\workspace\spring-ws\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="4.39" classname="xpadro.spring.ws.test.TestClient" name="invokeOrderService"/>
+</testsuite>

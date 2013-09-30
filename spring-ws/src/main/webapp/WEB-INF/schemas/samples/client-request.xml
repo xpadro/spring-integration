@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientDataRequest xmlns="http://www.xpadro.spring.samples.com/orders"
+	clientId="A-123"
+	productId="C5FH"
+	quantity="5" />
