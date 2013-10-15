@@ -13,3 +13,9 @@ Samples of different Spring Integration modules (jms, batch, integration)
 
   Blog post related to this project:
   http://xpadro.blogspot.com.es/2013/08/spring-jms-processing-messages-within.html
+
+
+- <b>spring-ws</b>: Shows how to implement a web service with the Spring-WS module. The example starts with a sample XML document and uses it to generate the contract. This project uses JAXB2 to generate the Java objects.
+
+  Blog post related to this project:
+  http://xpadro.blogspot.com.es/2013/09/creating-contract-first-web-services_30.html
