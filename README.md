@@ -19,3 +19,6 @@ Samples of different Spring Integration modules (jms, batch, integration)
 
   Blog post related to this project:
   http://xpadro.blogspot.com.es/2013/09/creating-contract-first-web-services_30.html
+
+
+- <b>int-rmi</b>: This project shows a client invoking a service over RMI with Spring Integration. The client uses the MessagingTemplate class to explicitly send its request to the message channel.
