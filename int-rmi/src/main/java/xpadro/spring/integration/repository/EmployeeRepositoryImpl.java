@@ -21,8 +21,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 	private static final String COLUMN_ID = "id";
 	private static final String COLUMN_NAME = "name";
 	
-	public EmployeeRepositoryImpl() {}
-	
 	@Autowired
 	public EmployeeRepositoryImpl(DataSource dataSource) {
 		this.template = new JdbcTemplate(dataSource);
