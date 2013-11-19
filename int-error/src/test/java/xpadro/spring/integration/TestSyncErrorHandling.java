@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import xpadro.spring.integration.exception.InvalidOrderException;
 import xpadro.spring.integration.model.Order;
+import xpadro.spring.integration.model.OrderConfirmation;
 import xpadro.spring.integration.service.OrderService;
 
 @ContextConfiguration(locations = {"/xpadro/spring/integration/config/int-config.xml"})
@@ -20,12 +21,21 @@ public class TestSyncErrorHandling {
 	private OrderService service;
 	
 	@Test
+	public void testCorrectOrder() {
+		OrderConfirmation confirmation = service.sendOrder(new Order(3, "an correct order"));
+		Assert.assertNotNull(confirmation);
+		Assert.assertEquals("confirmed", confirmation.getId());
+	}
+	
+	@Test
 	public void testSyncErrorHandling() {
+		OrderConfirmation confirmation = null;
 		try {
-			service.sendOrder(new Order(1, "an order"));
+			confirmation = service.sendOrder(new Order(1, "an order"));
 			Assert.fail("Should throw a MessageHandlingException");
 		} catch (MessageHandlingException e) {
 			Assert.assertEquals(InvalidOrderException.class, e.getCause().getClass());
+			Assert.assertNull(confirmation);
 		}
 	}
 }
