@@ -14,7 +14,7 @@ public class OrderRouter {
 	
 
 	public String redirectOrder(Order order) {
-		if (order.getId() == 1) {
+		if (order.getId() < 5) {
 			logger.info("Redirecting to {}", SYNC_CHANNEL);
 			return SYNC_CHANNEL;
 		}

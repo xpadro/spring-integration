@@ -18,9 +18,14 @@
 	<int:router input-channel="entryChannel" ref="orderRouter" method="redirectOrder"/>
 	
 	<int:channel id="syncChannel"/>
+	
 	<int:channel id="asyncChannel">
 		<int:queue capacity="5"/>
 	</int:channel>
 	
 	<int:service-activator method="processOrder" input-channel="syncChannel" ref="orderProcessor"/>
+	
+	<int:service-activator method="processOrder" input-channel="asyncChannel" ref="orderProcessor">
+		<int:poller fixed-delay="2000"/>
+	</int:service-activator>
 </beans>
