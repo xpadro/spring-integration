@@ -22,7 +22,7 @@ public class TestSyncErrorHandling {
 	
 	@Test
 	public void testCorrectOrder() {
-		OrderConfirmation confirmation = service.sendOrder(new Order(3, "an correct order"));
+		OrderConfirmation confirmation = service.sendOrder(new Order(3, "a correct order"));
 		Assert.assertNotNull(confirmation);
 		Assert.assertEquals("confirmed", confirmation.getId());
 	}
@@ -31,7 +31,7 @@ public class TestSyncErrorHandling {
 	public void testSyncErrorHandling() {
 		OrderConfirmation confirmation = null;
 		try {
-			confirmation = service.sendOrder(new Order(1, "an order"));
+			confirmation = service.sendOrder(new Order(1, "an invalid order"));
 			Assert.fail("Should throw a MessageHandlingException");
 		} catch (MessageHandlingException e) {
 			Assert.assertEquals(InvalidOrderException.class, e.getCause().getClass());

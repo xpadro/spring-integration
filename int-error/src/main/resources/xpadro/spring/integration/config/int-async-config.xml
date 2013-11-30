@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-jdbc="http://www.springframework.org/schema/integration/jdbc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/jdbc http://www.springframework.org/schema/integration/jdbc/spring-integration-jdbc.xsd">
+	
+	<context:component-scan base-package="xpadro.spring.integration"/>
+	
+	<int:gateway default-request-channel="asyncChannel" 
+		service-interface="xpadro.spring.integration.service.OrderService" error-channel="errorChannel"/>
+	
+	<int:channel id="asyncChannel">
+		<int:queue capacity="5"/>
+	</int:channel>
+	
+	<int:service-activator method="processOrder" input-channel="asyncChannel" ref="orderProcessor">
+		<int:poller fixed-delay="2000"/>
+	</int:service-activator>
+	
+	<int:service-activator input-channel="errorChannel" ref="orderErrorHandler" method="handleFailedOrder"/>
+	
+	<bean id="orderErrorHandler" class="xpadro.spring.integration.activator.OrderErrorHandler"/>
+</beans>
