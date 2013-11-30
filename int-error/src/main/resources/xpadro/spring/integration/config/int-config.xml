@@ -10,12 +10,12 @@
 	
 	<context:component-scan base-package="xpadro.spring.integration"/>
 	
-	<int:gateway default-request-channel="entryChannel" 
+	<int:gateway default-request-channel="requestChannel" 
 		service-interface="xpadro.spring.integration.service.OrderService"/>
 	
-	<int:channel id="entryChannel"/>
+	<int:channel id="requestChannel"/>
 	
-	<int:router input-channel="entryChannel" ref="orderRouter" method="redirectOrder"/>
+	<int:router input-channel="requestChannel" ref="orderRouter" method="redirectOrder"/>
 	
 	<int:channel id="syncChannel"/>
 	
