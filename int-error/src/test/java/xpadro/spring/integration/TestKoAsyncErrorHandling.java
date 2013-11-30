@@ -18,7 +18,7 @@ import xpadro.spring.integration.service.OrderService;
 
 @ContextConfiguration(locations = {"/xpadro/spring/integration/config/int-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class TestAsyncErrorHandling {
+public class TestKoAsyncErrorHandling {
 
 	@Autowired
 	private OrderService service;
@@ -31,7 +31,10 @@ public class TestAsyncErrorHandling {
 		Assert.assertEquals("confirmed", orderConfirmation.getId());
 	}
 	
-	@Test(expected=MessageHandlingException.class)
+	
+	/*@Test(expected=MessageHandlingException.class)
+	 * This test will fail, since the exception will never reach the caller
+	 */
 	public void testAsyncErrorHandling() throws InterruptedException, ExecutionException {
 		Future<OrderConfirmation> confirmation = service.sendFutureOrder(new Order(6, "another order"));
 	}
