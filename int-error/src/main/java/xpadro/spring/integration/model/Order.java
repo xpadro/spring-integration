@@ -2,6 +2,12 @@ package xpadro.spring.integration.model;
 
 import java.io.Serializable;
 
+/**
+ * Contains detail of orders sent to process
+ * 
+ * @author xpadro
+ *
+ */
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

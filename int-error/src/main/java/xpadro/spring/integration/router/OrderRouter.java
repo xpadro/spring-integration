@@ -6,6 +6,12 @@ import org.springframework.stereotype.Component;
 
 import xpadro.spring.integration.model.Order;
 
+/**
+ * Redirects an order to the appropriate channel (sync or async) depending on the order id
+ * 
+ * @author xpadro
+ *
+ */
 @Component("orderRouter")
 public class OrderRouter {
 	private static final Logger logger = LoggerFactory.getLogger(OrderRouter.class);

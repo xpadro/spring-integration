@@ -8,6 +8,12 @@ import xpadro.spring.integration.exception.InvalidOrderException;
 import xpadro.spring.integration.model.Order;
 import xpadro.spring.integration.model.OrderConfirmation;
 
+/**
+ * Processor that receives an order and returns an order confirmation
+ * 
+ * @author xpadro
+ *
+ */
 @Component("orderProcessor")
 public class OrderProcessor {
 	private static final Logger logger = LoggerFactory.getLogger(OrderProcessor.class);
