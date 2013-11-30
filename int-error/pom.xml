@@ -15,6 +15,7 @@
 		<spring-integration-version>2.0.4.RELEASE</spring-integration-version>
 		<slf4j-version>1.7.5</slf4j-version>
 		<junit-version>4.9</junit-version>
+		<hsqldb-version>1.8.0.10</hsqldb-version>
 	</properties>
 
 	<dependencies>
@@ -40,6 +41,18 @@
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-core</artifactId>
 			<version>${spring-integration-version}</version>
+		</dependency>
+		
+		<!-- Database -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb-version}</version>
 		</dependency>
 
 		<!-- Testing -->
