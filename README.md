@@ -25,3 +25,9 @@ Samples of different Spring Integration modules (jms, batch, integration)
 
   Blog post related to this project:
   http://xpadro.blogspot.com.es/2013/10/spring-integration-using-rmi-channel.html
+
+
+- <b>int-error</b>: Implements and tests the different mechanisms for error handling in Spring Integration. Tests are splitted in two main areas; synchronous and asynchronous messaging.
+
+  Blog post related to this project: 
+  http://xpadro.blogspot.com.es/2013/11/how-error-handling-works-in-spring.html
