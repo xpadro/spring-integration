@@ -39,4 +39,14 @@
 
 	<int:service-activator ref="clientServiceActivator"
 		method="handleServiceResult" input-channel="responseChannel" />
+		
+	
+	<!-- Service is not active - Activating retrieval -->
+	<int:service-activator ref="clientServiceActivator" method="handleFailedInvocation" input-channel="errorChannel" />
+
+	<int:inbound-channel-adapter id="retryAdapter" channel="requestChannel" 
+		ref="clientServiceActivator" method="retryInvocation" auto-startup="false">
+		
+		<int:poller trigger="serviceRetryTrigger" />
+	</int:inbound-channel-adapter>
 </beans>
