@@ -15,7 +15,8 @@ import xpadro.spring.integration.data.RequestData;
 import xpadro.spring.integration.gateway.ClientService;
 import xpadro.spring.integration.types.ClientDataRequest;
 
-@ContextConfiguration({"classpath:xpadro/spring/integration/config/int-config.xml"})
+@ContextConfiguration({"classpath:xpadro/spring/integration/config/int-config.xml",
+	"classpath:xpadro/spring/integration/config/mongodb-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TestInvocation {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());

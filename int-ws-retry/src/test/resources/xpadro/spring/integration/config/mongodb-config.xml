@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int-mongodb="http://www.springframework.org/schema/integration/mongodb"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/integration/mongodb http://www.springframework.org/schema/integration/mongodb/spring-integration-mongodb-3.0.xsd">
+	
+	<bean id="mongoDbFactory" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
+		<constructor-arg>
+			<bean class="com.mongodb.Mongo"/>
+		</constructor-arg>
+		<constructor-arg value="test"/>
+	</bean>
+	 
+	<int-mongodb:outbound-channel-adapter id="mongodbAdapter" channel="logChannel"
+		collection-name="failedRequests" 
+		mongodb-factory="mongoDbFactory" />
+</beans>

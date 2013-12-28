@@ -59,6 +59,6 @@
 	
 	
 	<!-- Log failed invocation -->
-	<int:service-activator ref="clientServiceActivator" method="handleFailedInvocation" input-channel="failedChannel" />
-	
+	<int:service-activator ref="clientServiceActivator" method="handleFailedInvocation" input-channel="failedChannel" output-channel="logChannel" />
+	<int:channel id="logChannel" />
 </beans>

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.integration.Message;
+import org.springframework.integration.MessageHandlingException;
 import org.springframework.integration.endpoint.AbstractEndpoint;
 import org.springframework.stereotype.Component;
 
@@ -57,9 +58,9 @@ public class ClientServiceActivator {
 	 * The service invocation won't succeed. Logs the failed request to the DB and finishes the flow.
 	 * @param msg
 	 */
-	public void handleFailedInvocation(Message<?> msg) {
-		//TODO log to DB
+	public Message<?> handleFailedInvocation(MessageHandlingException exception) {
 		logger.info("Failed to succesfully invoke service. Logging to DB...");
 		retryAdapter.stop();
+		return exception.getFailedMessage();
 	}
 }
