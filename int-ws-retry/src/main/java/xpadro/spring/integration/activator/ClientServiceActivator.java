@@ -23,7 +23,7 @@ public class ClientServiceActivator {
 	
 
 	/**
-	 * Receives the result from service invocation
+	 * Receives the result from a succesful service invocation. Flow finishes here.
 	 * @param msg
 	 */
 	public void handleServiceResult(Message<?> msg) {
@@ -41,7 +41,7 @@ public class ClientServiceActivator {
 	}
 
 	/**
-	 * Sends the request message to the outbound service gateway
+	 * Retries the failed invocation. Sends the request message to the outbound service gateway
 	 * @return
 	 */
 	public ClientDataRequest retryInvocation() {
@@ -55,6 +55,10 @@ public class ClientServiceActivator {
 		return request;
 	}
 	
+	/**
+	 * The service invocation won't succeed. Logs the failed request to the DB and finishes the flow.
+	 * @param msg
+	 */
 	public void handleFailedInvocation(Message<?> msg) {
 		//TODO log to DB
 		logger.info("Failed to succesfully invoke service. Logging to DB...");

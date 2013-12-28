@@ -20,6 +20,12 @@ public class ServiceResultRouter {
 	private static final String RETRY_CHANNEL = "retryChannel";
 
 
+	/**
+	 * The service invocation failed. If maxRetries aren't reached, it will send the request to the retry channel. Otherwise, it will send the failed request
+	 * to the failed channel in order to log the request and finish the flow.
+	 * @param msg
+	 * @return
+	 */
 	public String handleServiceError(Message<?> msg) {
 		lock.lock();
 		try {
