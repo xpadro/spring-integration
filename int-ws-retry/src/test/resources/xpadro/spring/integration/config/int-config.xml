@@ -14,9 +14,7 @@
 	<context:component-scan base-package="xpadro.spring.integration" />
 	
 	<!-- Initial service request -->
-	
-	<int:gateway id="systemEntry"
-		default-request-channel="requestChannel"
+	<int:gateway id="systemEntry" default-request-channel="requestChannel"
 		service-interface="xpadro.spring.integration.gateway.ClientService" />
 
 	<int:channel id="requestChannel">
@@ -37,16 +35,30 @@
 	<!-- Service is running - Response received -->
 	<int:channel id="responseChannel" />
 
-	<int:service-activator ref="clientServiceActivator"
-		method="handleServiceResult" input-channel="responseChannel" />
+	<int:service-activator ref="clientServiceActivator" method="handleServiceResult" input-channel="responseChannel" />
 		
 	
-	<!-- Service is not active - Activating retrieval -->
-	<int:service-activator ref="clientServiceActivator" method="handleFailedInvocation" input-channel="errorChannel" />
+	<!-- Service invocation failed -->
+	<int:router ref="resultRouter" method="handleServiceError" input-channel="errorChannel"/>
+	<int:channel id="retryChannel" />
+	<int:channel id="failedChannel" />
+	
+	
+	<!-- Retry -->
+	<int:service-activator ref="clientServiceActivator" method="retryFailedInvocation" input-channel="retryChannel" />
 
 	<int:inbound-channel-adapter id="retryAdapter" channel="requestChannel" 
 		ref="clientServiceActivator" method="retryInvocation" auto-startup="false">
 		
-		<int:poller trigger="serviceRetryTrigger" />
+		<int:poller trigger="serviceRetryTrigger"/>
 	</int:inbound-channel-adapter>
+	
+	<bean id="serviceRetryTrigger" class="xpadro.spring.integration.trigger.ServiceRetryTrigger">
+		<property name="rate" value="5000"/>
+	</bean>
+	
+	
+	<!-- Log failed invocation -->
+	<int:service-activator ref="clientServiceActivator" method="handleFailedInvocation" input-channel="failedChannel" />
+	
 </beans>

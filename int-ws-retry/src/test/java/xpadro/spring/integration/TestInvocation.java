@@ -35,6 +35,6 @@ public class TestInvocation {
 		service.invoke(request);
 		logger.info("Doing other stuff...");
 		
-		Thread.sleep(30000);
+		Thread.sleep(60000);
 	}
 }
