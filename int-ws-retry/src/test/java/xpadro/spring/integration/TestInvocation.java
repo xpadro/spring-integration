@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import xpadro.spring.integration.data.RequestData;
 import xpadro.spring.integration.gateway.ClientService;
 import xpadro.spring.integration.types.ClientDataRequest;
 
@@ -22,6 +23,9 @@ public class TestInvocation {
 	@Autowired
 	private ClientService service;
 	
+	@Autowired
+	private RequestData requestData;
+	
 	
 	@Test
 	public void testInvocation() throws InterruptedException, ExecutionException {
@@ -31,6 +35,7 @@ public class TestInvocation {
 		request.setClientId("123");
 		request.setProductId("XA-55");
 		request.setQuantity(new BigInteger("5"));
+		requestData.setRequest(request);
 		
 		service.invoke(request);
 		logger.info("Doing other stuff...");

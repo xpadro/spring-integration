@@ -54,7 +54,7 @@
 	</int:inbound-channel-adapter>
 	
 	<bean id="serviceRetryTrigger" class="xpadro.spring.integration.trigger.ServiceRetryTrigger">
-		<property name="rate" value="5000"/>
+		<property name="rate" value="7000"/>
 	</bean>
 	
 	

@@ -1,7 +1,5 @@
 package xpadro.spring.integration.activator;
 
-import java.math.BigInteger;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,7 @@ import org.springframework.integration.Message;
 import org.springframework.integration.endpoint.AbstractEndpoint;
 import org.springframework.stereotype.Component;
 
+import xpadro.spring.integration.data.RequestData;
 import xpadro.spring.integration.types.ClientDataRequest;
 import xpadro.spring.integration.types.ClientDataResponse;
 
@@ -20,6 +19,9 @@ public class ClientServiceActivator {
 	@Autowired
 	@Qualifier("retryAdapter")
 	private AbstractEndpoint retryAdapter;
+	
+	@Autowired
+	private RequestData requestData;
 	
 
 	/**
@@ -45,11 +47,7 @@ public class ClientServiceActivator {
 	 * @return
 	 */
 	public ClientDataRequest retryInvocation() {
-		ClientDataRequest request = new ClientDataRequest();
-		request.setClientId("123");
-		request.setProductId("XA-55");
-		request.setQuantity(new BigInteger("5"));
-		
+		ClientDataRequest request = requestData.getRequest();
 		logger.info("Retrying service invocation...");
 		
 		return request;
