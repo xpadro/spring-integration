@@ -35,7 +35,7 @@ public class ClientServiceActivator {
 	 * Service invocation failed. Activates trigger to start retries
 	 * @param msg
 	 */
-	public void handleFailedInvocation(Message<?> msg) {
+	public void retryFailedInvocation(Message<?> msg) {
 		logger.info("Service invocation failed. Activating retry trigger...");
 		retryAdapter.start();
 	}
@@ -53,5 +53,11 @@ public class ClientServiceActivator {
 		logger.info("Retrying service invocation...");
 		
 		return request;
+	}
+	
+	public void handleFailedInvocation(Message<?> msg) {
+		//TODO log to DB
+		logger.info("Failed to succesfully invoke service. Logging to DB...");
+		retryAdapter.stop();
 	}
 }
