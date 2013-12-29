@@ -33,12 +33,12 @@ public class ServiceResultRouter {
 			if (maxRetries > 0) {
 				currentRetries++;
 				if (currentRetries > maxRetries) {
-					logger.info("Max retries reached");
-					return FAIL_CHANNEL;
+					logger.info("Max retries [{}] reached", maxRetries);
+					return FAIL_CHANNEL; 
 				}
 			}
 			
-			logger.info("Retry number {}", currentRetries);
+			logger.info("Retry number {} of {}", currentRetries, maxRetries);
 			return RETRY_CHANNEL;
 		} finally {
 			lock.unlock();
