@@ -22,7 +22,7 @@
 	</int:channel>
 	
 	
-	<int-ws:outbound-gateway id="marshallingGateway"
+	<int-ws:outbound-gateway id="marshallingGateway" interceptor="clientInterceptor"
 		request-channel="requestChannel" reply-channel="responseChannel"
 		uri="http://localhost:8080/spring-ws/orders" marshaller="marshaller"
 		unmarshaller="marshaller">
