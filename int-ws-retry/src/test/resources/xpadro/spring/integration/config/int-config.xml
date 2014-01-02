@@ -50,12 +50,8 @@
 	<int:inbound-channel-adapter id="retryAdapter" channel="requestChannel" 
 		ref="clientServiceActivator" method="retryInvocation" auto-startup="false">
 		
-		<int:poller trigger="serviceRetryTrigger"/>
+		<int:poller cron="0/5 * * * * *"/>
 	</int:inbound-channel-adapter>
-	
-	<bean id="serviceRetryTrigger" class="xpadro.spring.integration.trigger.ServiceRetryTrigger">
-		<property name="rate" value="7000"/>
-	</bean>
 	
 	
 	<!-- Log failed invocation -->
