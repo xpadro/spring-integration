@@ -31,3 +31,12 @@ Samples of different Spring Integration modules (jms, batch, integration)
 
   Blog post related to this project: 
   http://xpadro.blogspot.com.es/2013/11/how-error-handling-works-in-spring.html
+
+
+- <b>int-ws-retry-adv</b>: Allows to retry a web service operation using RequestHandlerRetryAdvice. The project <k>spring-ws</k> from this same repository needs to be deployed on the server to test a succesful invocation. Otherwise, it will keep retrying invocations until it reaches a max retries limit. If the limit is reached, it will store the request to a mongoDB database (a mongod instance needs to be running). 
+
+  Blog post related to this project:
+  http://xpadro.blogspot.com.es/2013/12/retry-web-service-operations-with.html
+  
+  
+- <b>int-ws-retry</b>: A custom version of the <k>int-ws-retry-adv</k> project without the support of Spring Retry. This application uses a cron trigger with an inbound adapter to accomplish the same functionality.
