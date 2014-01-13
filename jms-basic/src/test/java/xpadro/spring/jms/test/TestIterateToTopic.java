@@ -1,5 +1,7 @@
 package xpadro.spring.jms.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,5 +40,6 @@ public class TestIterateToTopic {
 		}
 		
 		Thread.sleep(2000);
+		assertEquals(10, registry.getReceivedNotifications().size());
 	}
 }

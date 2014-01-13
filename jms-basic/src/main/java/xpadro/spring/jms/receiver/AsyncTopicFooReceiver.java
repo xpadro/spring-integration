@@ -20,6 +20,7 @@ public class AsyncTopicFooReceiver {
 	
 	
 	public void receiveIteration(Notification notification) {
+		registry.registerNotification(notification);
 		logger.info("Receiving notification {}", notification.getId());
 	}
 }
