@@ -61,7 +61,7 @@ public class TestOkAsyncErrorHandling {
 	private void validateSavedError(int orderId) {
 		String query = "select * from errors where orderid=?";
 		Map<String, Object> result = jdbcTemplate.queryForMap(query, orderId);
-		Assert.assertEquals(6, result.get("orderid"));
+		Assert.assertEquals(orderId, result.get("orderid"));
 		assertThat((String)result.get("message"), containsString("Order ID is invalid"));
 	}
 }
