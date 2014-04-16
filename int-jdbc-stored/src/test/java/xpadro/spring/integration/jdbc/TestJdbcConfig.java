@@ -10,16 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import xpadro.spring.integration.gateway.OrderGateway;
 import xpadro.spring.integration.jdbc.model.Order;
 
 
-@ContextConfiguration(locations = {"/xpadro/spring/integration/config/jdbc-config.xml"})
+@ContextConfiguration(locations = {"/xpadro/spring/integration/config/int-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TestJdbcConfig {
 	private static final Logger logger = LoggerFactory.getLogger(TestJdbcConfig.class);
 	
 	@Autowired
 	MyRepository repository;
+	
+	@Autowired
+	OrderGateway gateway;
 	
 
 	@Test
@@ -34,5 +38,12 @@ public class TestJdbcConfig {
 		String result = repository.getDescriptionFromStoredProcedure(2);
 		Assert.assertEquals("PK2222", result);
 		logger.info("Order from JDBC stored procedure: {}", result);
+	}
+	
+	@Test
+	public void testIntegration() {
+		String result = gateway.getOrderName(2);
+		Assert.assertEquals("PK2222", result);
+		logger.info("Order from SI Gateway stored procedure: {}", result);
 	}
 }
