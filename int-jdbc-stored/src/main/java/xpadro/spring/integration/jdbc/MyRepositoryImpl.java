@@ -52,7 +52,7 @@ public class MyRepositoryImpl implements MyRepository {
 	
 	
 	class OrderProcedure extends StoredProcedure {
-		private static final String PROCEDURE_NAME = "test3";
+		private static final String PROCEDURE_NAME = "get_order";
 		private static final String PARAM_ID = "id";
 		private static final String PARAM_DESCRIPTION = "descrip";
 		
