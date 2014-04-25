@@ -15,7 +15,7 @@
 	<ws:annotation-driven/>
 	
 	<ws:dynamic-wsdl id="orderDefinition" portTypeName="Orders" 
-	                 locationUri="http://localhost:8081/spring-ws">
+	                 locationUri="http://localhost:8080/spring-ws">
 		<ws:xsd location="/WEB-INF/schemas/xsd/client-service.xsd"/>
 	</ws:dynamic-wsdl>
 </beans>

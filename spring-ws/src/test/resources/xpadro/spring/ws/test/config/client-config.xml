@@ -13,7 +13,7 @@
 	<bean class="org.springframework.ws.client.core.WebServiceTemplate">
 		<property name="marshaller" ref="marshaller" />
 		<property name="unmarshaller" ref="marshaller" />
-		<property name="defaultUri" value="http://localhost:8081/spring-ws/orders" /> 
+		<property name="defaultUri" value="http://localhost:8080/spring-ws/orders" /> 
 	</bean>
 
 </beans>
