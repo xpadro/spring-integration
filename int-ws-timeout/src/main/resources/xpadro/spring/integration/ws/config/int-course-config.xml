@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-ws="http://www.springframework.org/schema/integration/ws"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/ws http://www.springframework.org/schema/integration/ws/spring-integration-ws.xsd
+		http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
+	
+	<context:component-scan base-package="xpadro.spring.integration.ws"/>
+	<context:property-placeholder location="classpath:props/service.properties"/>
+	
+	<!-- System entry -->
+	<int:gateway id="systemEntry" default-request-channel="requestChannel" 
+		service-interface="xpadro.spring.integration.ws.gateway.CourseService"/>
+	
+	<!-- Web service invocation -->
+	<int-ws:outbound-gateway uri="http://localhost:8080/spring-ws-courses/courses" 
+			marshaller="marshaller" unmarshaller="marshaller" 
+			request-channel="requestChannel" message-sender="messageSender"/>
+	
+	<oxm:jaxb2-marshaller id="marshaller" contextPath="xpadro.spring.integration.ws.types" />
+	
+	<bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponentsMessageSender">
+		<property name="connectionTimeout" value="${timeout.connection}"/>
+		<property name="readTimeout" value="${timeout.read}"/>
+	</bean>
+
+</beans>
