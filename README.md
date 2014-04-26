@@ -40,3 +40,9 @@ Samples of different Spring Integration modules (jms, batch, integration)
   
   
 - <b>int-ws-retry</b>: A custom version of the <k>int-ws-retry-adv</k> project without the support of Spring Retry. This application uses a cron trigger with an inbound adapter to accomplish the same functionality.
+
+
+- <b>int-ws-timeout</b>: Example of how to configure a timeout for invoking a web service through a web service outbound gateway. The web service's source code can be found at https://github.com/xpadro/spring-samples/tree/master/spring-ws-courses[github]
+
+  Blog post related to this project:
+  PENDING
