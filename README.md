@@ -45,4 +45,4 @@ Samples of different Spring Integration modules (jms, batch, integration)
 - <b>int-ws-timeout</b>: Example of how to configure a timeout for invoking a web service through a web service outbound gateway. The web service's source code can be found at https://github.com/xpadro/spring-samples/tree/master/spring-ws-courses
 
   Blog post related to this project:
-  PENDING
+  http://xpadro.blogspot.com.es/2014/04/spring-integration-configure-web.html
