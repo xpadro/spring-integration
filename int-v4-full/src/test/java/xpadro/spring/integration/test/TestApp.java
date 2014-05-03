@@ -19,7 +19,7 @@ public class TestApp {
 	CourseService service;
 	
 	@Test
-	public void test() {
+	public void testFlow() {
 		String courseName = service.findCourse("BC-45");
 		assertNotNull(courseName);
 		assertEquals("Introduction to Java", courseName);
