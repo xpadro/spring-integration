@@ -46,3 +46,9 @@ Samples of different Spring Integration modules (jms, batch, integration)
 
   Blog post related to this project:
   http://xpadro.blogspot.com.es/2014/04/spring-integration-configure-web.html
+
+
+- <b>int-v4-full</b>: Implemented with Spring 4.0.3 and Spring Integration 4.0, this project shows an example of configuring an integration application without using XML. The configuration is defined in @Configuration classes.
+
+  Blog post related to this project: 
+  http://xpadro.blogspot.com.es/2014/05/spring-integration-40-complete-xml-free.html
