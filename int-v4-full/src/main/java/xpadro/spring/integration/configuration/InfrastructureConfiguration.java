@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Description;
 import org.springframework.context.annotation.Import;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.channel.FixedSubscriberChannel;
 import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.messaging.MessageChannel;
@@ -29,10 +30,7 @@ public class InfrastructureConfiguration {
 	@Bean
 	@Description("Sends request messages to the web service outbound gateway")
 	public MessageChannel invocationChannel(@Qualifier("wsOutboundGateway") MessageHandler wsOutboundGateway) {
-		DirectChannel channel = new DirectChannel();
-		channel.subscribe(wsOutboundGateway);
-		
-		return channel;
+		return new FixedSubscriberChannel(wsOutboundGateway);
 	}
 	
 	@Bean
@@ -44,10 +42,7 @@ public class InfrastructureConfiguration {
 	@Bean
 	@Description("Stores non filtered messages to the database")
 	public MessageChannel storeChannel(@Qualifier("mongodbAdapter") MessageHandler mongoOutboundAdapter) {
-		DirectChannel channel = new DirectChannel();
-		channel.subscribe(mongoOutboundAdapter);
-		
-		return channel;
+		return new FixedSubscriberChannel(mongoOutboundAdapter);
 	}
 	
 }
