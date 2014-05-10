@@ -1,6 +1,5 @@
 package xpadro.spring.integration.configuration;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,11 +7,9 @@ import org.springframework.context.annotation.Description;
 import org.springframework.context.annotation.Import;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.channel.FixedSubscriberChannel;
 import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.MessageHandler;
 
 @Configuration
 @ComponentScan("xpadro.spring.integration.endpoint")	//@Component
@@ -29,8 +26,8 @@ public class InfrastructureConfiguration {
 	
 	@Bean
 	@Description("Sends request messages to the web service outbound gateway")
-	public MessageChannel invocationChannel(@Qualifier("wsOutboundGateway") MessageHandler wsOutboundGateway) {
-		return new FixedSubscriberChannel(wsOutboundGateway);
+	public MessageChannel invocationChannel() {
+		return new DirectChannel();
 	}
 	
 	@Bean
@@ -41,8 +38,8 @@ public class InfrastructureConfiguration {
 	
 	@Bean
 	@Description("Stores non filtered messages to the database")
-	public MessageChannel storeChannel(@Qualifier("mongodbAdapter") MessageHandler mongoOutboundAdapter) {
-		return new FixedSubscriberChannel(mongoOutboundAdapter);
+	public MessageChannel storeChannel() {
+		return new DirectChannel();
 	}
 	
 }
