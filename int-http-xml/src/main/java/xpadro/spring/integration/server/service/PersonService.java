@@ -1,0 +1,8 @@
+package xpadro.spring.integration.server.service;
+
+import xpadro.spring.integration.server.model.ServerPerson;
+
+public interface PersonService {
+
+	ServerPerson getPerson(long id);
+}
