@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import xpadro.spring.integration.client.model.ClientPerson;
+import xpadro.spring.integration.test.model.ClientPerson;
 
 @RunWith(BlockJUnit4ClassRunner.class)
 public class GetOperationsTest {

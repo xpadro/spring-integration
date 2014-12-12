@@ -1,4 +1,4 @@
-package xpadro.spring.integration.client.model;
+package xpadro.spring.integration.test.model;
 
 import java.io.Serializable;
 
