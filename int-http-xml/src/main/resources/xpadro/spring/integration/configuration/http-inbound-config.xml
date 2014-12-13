@@ -27,4 +27,22 @@
 	
 	<int:service-activator ref="personEndpoint" method="get" input-channel="httpGetChannel" output-channel="responseChannel"/>
 	
+	
+	<!-- POST, PUT --> 
+	<int-http:inbound-channel-adapter channel="routeRequest" 
+		status-code-expression="T(org.springframework.http.HttpStatus).NO_CONTENT"
+		supported-methods="POST, PUT" 
+		path="/persons, /persons/{personId}"
+		request-payload-type="xpadro.spring.integration.server.model.ServerPerson">
+	
+		<int-http:request-mapping consumes="application/json"/>
+	</int-http:inbound-channel-adapter>
+	
+	<int:router input-channel="routeRequest" expression="headers.http_requestMethod">
+	    <int:mapping value="PUT" channel="httpPutChannel"/>
+	    <int:mapping value="POST" channel="httpPostChannel"/>
+	</int:router>
+	
+	<int:service-activator ref="personEndpoint" method="put" input-channel="httpPutChannel"/>
+	<int:service-activator ref="personEndpoint" method="post" input-channel="httpPostChannel"/>
 </beans>
