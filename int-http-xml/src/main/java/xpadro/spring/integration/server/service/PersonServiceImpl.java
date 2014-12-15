@@ -43,4 +43,10 @@ public class PersonServiceImpl implements PersonService {
 		}
 	}
 
+	@Override
+	public void deletePerson(long id) {
+		logger.info("deleting person with id {}", id);
+		persons.remove(id);
+	}
+
 }

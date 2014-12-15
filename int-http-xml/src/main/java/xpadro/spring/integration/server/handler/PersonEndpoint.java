@@ -40,4 +40,9 @@ public class PersonEndpoint {
 	public void post(Message<ServerPerson> msg) {
 		service.insertPerson(msg.getPayload());
 	}
+	
+	public void delete(Message<String> msg) {
+		long id = Long.valueOf(msg.getPayload());
+		service.deletePerson(id);
+	}
 }

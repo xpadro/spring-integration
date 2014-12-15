@@ -9,4 +9,6 @@ public interface PersonService {
 	void updatePerson(ServerPerson person);
 	
 	void insertPerson(ServerPerson person);
+	
+	void deletePerson(long id);
 }

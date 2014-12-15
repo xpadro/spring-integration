@@ -45,4 +45,17 @@
 	
 	<int:service-activator ref="personEndpoint" method="put" input-channel="httpPutChannel"/>
 	<int:service-activator ref="personEndpoint" method="post" input-channel="httpPostChannel"/>
+	
+	
+	<!-- DELETE -->
+	<int-http:inbound-channel-adapter channel="httpDeleteChannel" 
+		status-code-expression="T(org.springframework.http.HttpStatus).NO_CONTENT"
+		supported-methods="DELETE" 
+		path="/persons/{personId}" 
+		payload-expression="#pathVariables.personId">
+	
+		<int-http:request-mapping consumes="application/json"/>
+	</int-http:inbound-channel-adapter>
+	
+	<int:service-activator ref="personEndpoint" method="delete" input-channel="httpDeleteChannel"/>
 </beans>
