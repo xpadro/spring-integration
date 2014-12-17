@@ -9,15 +9,49 @@ import org.springframework.http.HttpMethod;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
+import org.springframework.integration.dsl.RouterSpec;
+import org.springframework.integration.dsl.support.Consumer;
 import org.springframework.integration.gateway.MessagingGatewaySupport;
 import org.springframework.integration.http.inbound.HttpRequestHandlingMessagingGateway;
 import org.springframework.integration.http.inbound.RequestMapping;
+import org.springframework.integration.router.ExpressionEvaluatingRouter;
+
+import xpadro.spring.integration.server.model.ServerPerson;
 
 @Configuration
 @ComponentScan("xpadro.spring.integration.server")
 @EnableIntegration
 public class InfrastructureConfiguration {
 
+	@Bean
+	public IntegrationFlow httpGetFlow() {
+		return IntegrationFlows.from(httpGetGate()).channel("httpGetChannel").handle("personEndpoint", "get").get();
+	}
+	
+	@Bean
+	public IntegrationFlow httpPostPutFlow() {
+		return IntegrationFlows.from(httpPostPutGate()).channel("routeRequest").route("headers.http_requestMethod", 
+				new Consumer<RouterSpec<ExpressionEvaluatingRouter>>() {
+					@Override
+					public void accept(RouterSpec<ExpressionEvaluatingRouter> spec) {
+						spec.prefix("http").suffix("Channel")
+							.channelMapping("PUT", "Put")
+							.channelMapping("POST", "Post");
+					}
+	        	}
+		).get();
+	}
+	
+	@Bean
+	public IntegrationFlow httpPostFlow() {
+		return IntegrationFlows.from("httpPostChannel").handle("personEndpoint", "post").get();
+	}
+	
+	@Bean
+	public IntegrationFlow httpPutFlow() {
+		return IntegrationFlows.from("httpPutChannel").handle("personEndpoint", "put").get();
+	}
+	
 	@Bean
 	public ExpressionParser parser() {
 		return new SpelExpressionParser();
@@ -33,8 +67,13 @@ public class InfrastructureConfiguration {
 	}
 	
 	@Bean
-	public IntegrationFlow httpGetFlow() {
-		return IntegrationFlows.from(httpGetGate()).channel("httpGetChannel").handle("personEndpoint", "get").get();
+	public MessagingGatewaySupport httpPostPutGate() {
+		HttpRequestHandlingMessagingGateway handler = new HttpRequestHandlingMessagingGateway();
+		handler.setRequestMapping(createMapping(new HttpMethod[]{HttpMethod.PUT, HttpMethod.POST}, "/persons", "/persons/{personId}"));
+		handler.setStatusCodeExpression(parser().parseExpression("T(org.springframework.http.HttpStatus).NO_CONTENT"));
+		handler.setRequestPayloadType(ServerPerson.class);
+
+		return handler;
 	}
 	
 	private RequestMapping createMapping(HttpMethod[] method, String... path) {
