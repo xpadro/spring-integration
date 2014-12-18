@@ -53,6 +53,11 @@ public class InfrastructureConfiguration {
 	}
 	
 	@Bean
+	public IntegrationFlow httpDeleteFlow() {
+		return IntegrationFlows.from(httpDeleteGate()).channel("httpDeleteChannel").handle("personEndpoint", "delete").get();
+	}
+	
+	@Bean
 	public ExpressionParser parser() {
 		return new SpelExpressionParser();
 	}
@@ -72,6 +77,16 @@ public class InfrastructureConfiguration {
 		handler.setRequestMapping(createMapping(new HttpMethod[]{HttpMethod.PUT, HttpMethod.POST}, "/persons", "/persons/{personId}"));
 		handler.setStatusCodeExpression(parser().parseExpression("T(org.springframework.http.HttpStatus).NO_CONTENT"));
 		handler.setRequestPayloadType(ServerPerson.class);
+
+		return handler;
+	}
+	
+	@Bean
+	public MessagingGatewaySupport httpDeleteGate() {
+		HttpRequestHandlingMessagingGateway handler = new HttpRequestHandlingMessagingGateway();
+		handler.setRequestMapping(createMapping(new HttpMethod[]{HttpMethod.DELETE}, "/persons/{personId}"));
+		handler.setStatusCodeExpression(parser().parseExpression("T(org.springframework.http.HttpStatus).NO_CONTENT"));
+		handler.setPayloadExpression(parser().parseExpression("#pathVariables.personId"));
 
 		return handler;
 	}

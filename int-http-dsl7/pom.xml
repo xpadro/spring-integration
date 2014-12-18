@@ -13,8 +13,6 @@
 		<spring-integration-version>4.1.0.RELEASE</spring-integration-version>
 		<slf4j-version>1.7.5</slf4j-version>
 		<junit-version>4.9</junit-version>
-		<servlet.version>3.1.0</servlet.version>
-		<jstl.version>1.2</jstl.version>
 	</properties>
 
 	<dependencies>
@@ -49,20 +47,6 @@
 			<version>1.0.0.RELEASE</version>
 		</dependency>
 		
-		<!-- Servlet -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${servlet.version}</version>
-			<scope>test</scope>
-		</dependency>
-            
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>${jstl.version}</version>
-		</dependency>
-
 		<!-- JSON -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
