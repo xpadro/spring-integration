@@ -13,7 +13,7 @@ Samples of different Spring Integration modules (jms, batch, integration)
 - <b>int-http-dsl</b>: An example of a web application that exposes a RESTful API using HTTP inbound channel adapters. The configuration of this application is fully implemented with JavaConfig and Spring Integration Java DSL. This example is implemented with a Java 8 version, making use of lambdas.
   
   Blog post related to this project:
-  In progress
+  http://xpadro.blogspot.com/2014/12/exposing-http-restful-api-with-inbound_22.html
 
 
 #### JMS
