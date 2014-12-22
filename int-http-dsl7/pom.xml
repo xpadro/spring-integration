@@ -13,6 +13,7 @@
 		<spring-integration-version>4.1.0.RELEASE</spring-integration-version>
 		<slf4j-version>1.7.5</slf4j-version>
 		<junit-version>4.9</junit-version>
+		<jackson-version>2.3.0</jackson-version>
 	</properties>
 
 	<dependencies>
@@ -51,13 +52,13 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.3.0</version>
+			<version>${jackson-version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.3.0</version>
+			<version>${jackson-version}</version>
 		</dependency>
 
 		<!-- Testing -->
