@@ -6,8 +6,6 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.jms.connection.CachingConnectionFactory;
-import org.springframework.jms.core.JmsTemplate;
 
 @SpringBootApplication
 public class JmsJavaconfigApplication {
@@ -16,16 +14,6 @@ public class JmsJavaconfigApplication {
 	@Bean
 	public ConnectionFactory connectionFactory() {
 		return new ActiveMQConnectionFactory(JMS_BROKER_URL);
-	}
-	
-	@Bean
-	public ConnectionFactory cachingConnectionFactory() {
-		return new CachingConnectionFactory(connectionFactory());
-	}
-	
-	@Bean
-	public JmsTemplate jmsTemplate() {
-		return new JmsTemplate(cachingConnectionFactory());
 	}
 
     public static void main(String[] args) {
