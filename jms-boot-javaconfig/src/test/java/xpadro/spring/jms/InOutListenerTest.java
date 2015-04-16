@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import xpadro.spring.jms.JmsJavaconfigApplication;
 import xpadro.spring.jms.model.Order;
 import xpadro.spring.jms.service.ClientService;
 import xpadro.spring.jms.service.RegisterService;
