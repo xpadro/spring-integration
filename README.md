@@ -28,6 +28,11 @@ Samples of different Spring Integration modules (jms, batch, integration)
   Blog post related to this project:
   http://xpadro.blogspot.com.es/2013/08/spring-jms-processing-messages-within.html
 
+- <b>jms-boot-javaconfig</b>: A simple example using annotated JMS listeners using no XML configuration. Spring Boot automatically configures the project based on dependencies included in the classpath. 
+
+  Blog post related to this project:
+  http://xpadro.blogspot.com/2015/04/configure-spring-jms-application-with.html
+  
 #### Web Services
 
 - <b>spring-ws</b>: Shows how to implement a web service with the Spring-WS module. The example starts with a sample XML document and uses it to generate the contract. This project uses JAXB2 to generate the Java objects.
