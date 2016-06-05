@@ -11,9 +11,11 @@ Examples using Spring 3 release:
 
 * [v3-ws-retry] - A custom version of the int-ws-retry-adv project without the support of Spring Retry. This application uses a cron trigger with an inbound adapter to accomplish the same functionality.
 
-
+* [v3-ws-timeout] - Example of how to configure a timeout for invoking a web service through a web service outbound gateway. The web service's source code can be found at https://github.com/xpadro/spring-samples/tree/master/spring-ws-courses
+  * Blog post: http://xpadro.blogspot.com.es/2014/04/spring-integration-configure-web.html
+  
 
    [v3-spring-ws]: https://github.com/xpadro/spring-integration/tree/master/webservices/v3-spring-ws
    [v3-ws-retry-adv]: https://github.com/xpadro/spring-integration/tree/master/webservices/v3-ws-retry-adv
    [v3-ws-retry]: https://github.com/xpadro/spring-integration/tree/master/webservices/v3-ws-retry
-   
+   [v3-ws-timeout]: https://github.com/xpadro/spring-integration/tree/master/webservices/v3-ws-timeout
