@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -13,13 +14,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import xpadro.spring.integration.test.model.ClientPerson;
 
 @RunWith(BlockJUnit4ClassRunner.class)
-public class PutOperationsTest {
-	private static final String URL = "http://localhost:8081/int-http-dsl/spring/persons/{personId}";
+public class DeleteOperationsTest {
+	private static final String URL = "http://localhost:8080/spring/persons/{personId}";
 	private final RestTemplate restTemplate = new RestTemplate();
 	
 	private HttpHeaders buildHeaders() {
@@ -31,19 +33,17 @@ public class PutOperationsTest {
 	}
 	
 	@Test
-	public void updateResource_noContentStatusCodeReturned() {
-		HttpEntity<Integer> getEntity = new HttpEntity<>(buildHeaders());
-		ResponseEntity<ClientPerson> response = restTemplate.exchange(URL, HttpMethod.GET, getEntity, ClientPerson.class, 4);
-		ClientPerson person = response.getBody();
-		person.setName("Sandra");
-		HttpEntity<ClientPerson> putEntity = new HttpEntity<ClientPerson>(person, buildHeaders());
-		
-		response = restTemplate.exchange(URL, HttpMethod.PUT, putEntity, ClientPerson.class, 4);
+	public void deleteResource_noContentStatusCodeReturned() {
+		HttpEntity<Integer> entity = new HttpEntity<>(buildHeaders());
+		ResponseEntity<ClientPerson> response = restTemplate.exchange(URL, HttpMethod.DELETE, entity, ClientPerson.class, 3);
 		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 		
-		response = restTemplate.exchange(URL, HttpMethod.GET, getEntity, ClientPerson.class, 4);
-		person = response.getBody();
-		assertEquals("Sandra", person.getName());
+		try {
+			response = restTemplate.exchange(URL, HttpMethod.GET, entity, ClientPerson.class, 3);
+			Assert.fail("404 error expected");
+		} catch (HttpClientErrorException e) {
+			assertEquals(HttpStatus.NOT_FOUND, e.getStatusCode());
+		}
 	}
-	
+		
 }
