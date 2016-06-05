@@ -18,8 +18,9 @@ import org.springframework.web.client.RestTemplate;
 import xpadro.spring.integration.test.model.ClientPerson;
 
 @RunWith(BlockJUnit4ClassRunner.class)
-public class PutOperationsTest {
-	private static final String URL = "http://localhost:8081/int-http-xml/spring/persons/{personId}";
+public class PostOperationsTest {
+	private static final String POST_URL = "http://localhost:8080/spring/persons";
+	private static final String GET_URL = "http://localhost:8080/spring/persons/{personId}";
 	private final RestTemplate restTemplate = new RestTemplate();
 	
 	private HttpHeaders buildHeaders() {
@@ -31,19 +32,16 @@ public class PutOperationsTest {
 	}
 	
 	@Test
-	public void updateResource_noContentStatusCodeReturned() {
-		HttpEntity<Integer> getEntity = new HttpEntity<>(buildHeaders());
-		ResponseEntity<ClientPerson> response = restTemplate.exchange(URL, HttpMethod.GET, getEntity, ClientPerson.class, 4);
-		ClientPerson person = response.getBody();
-		person.setName("Sandra");
-		HttpEntity<ClientPerson> putEntity = new HttpEntity<ClientPerson>(person, buildHeaders());
+	public void addResource_noContentStatusCodeReturned() {
+		ClientPerson person = new ClientPerson(9, "Jana");
+		HttpEntity<ClientPerson> entity = new HttpEntity<ClientPerson>(person, buildHeaders());
 		
-		response = restTemplate.exchange(URL, HttpMethod.PUT, putEntity, ClientPerson.class, 4);
+		ResponseEntity<ClientPerson> response = restTemplate.exchange(POST_URL, HttpMethod.POST, entity, ClientPerson.class);
 		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 		
-		response = restTemplate.exchange(URL, HttpMethod.GET, getEntity, ClientPerson.class, 4);
+		HttpEntity<Integer> getEntity = new HttpEntity<>(buildHeaders());
+		response = restTemplate.exchange(GET_URL, HttpMethod.GET, getEntity, ClientPerson.class, 9);
 		person = response.getBody();
-		assertEquals("Sandra", person.getName());
+		assertEquals("Jana", person.getName());
 	}
-	
 }
