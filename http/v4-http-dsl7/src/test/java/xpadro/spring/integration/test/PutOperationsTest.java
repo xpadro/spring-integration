@@ -19,7 +19,7 @@ import xpadro.spring.integration.test.model.ClientPerson;
 
 @RunWith(BlockJUnit4ClassRunner.class)
 public class PutOperationsTest {
-	private static final String URL = "http://localhost:8081/int-http-dsl7/spring/persons/{personId}";
+	private static final String URL = "http://localhost:8080/spring/persons/{personId}";
 	private final RestTemplate restTemplate = new RestTemplate();
 	
 	private HttpHeaders buildHeaders() {
