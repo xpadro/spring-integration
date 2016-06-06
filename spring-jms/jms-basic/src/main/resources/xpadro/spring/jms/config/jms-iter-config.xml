@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+              http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/jms
+              http://www.springframework.org/schema/jms/spring-jms.xsd">
+
+
+	<!-- Infrastructure -->
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="vm://embedded?broker.persistent=false"/>
+	</bean>
+	
+	<bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="targetConnectionFactory" ref="connectionFactory"/>
+	</bean>
+	
+	<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="cachingConnectionFactory"/>
+		<property name="pubSubDomain" value="true"/>
+		<property name="sessionTransacted" value="true" />
+	</bean>
+	
+	
+	<!-- Destinations -->
+	<bean id="testTopic" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="test.topic"/>
+	</bean>
+	
+	
+	<!-- Listeners -->
+	<jms:listener-container connection-factory="connectionFactory" destination-type="topic" concurrency="1" acknowledge="transacted">
+		<jms:listener destination="test.topic" ref="asyncTopicFooReceiver" method="receiveIteration"/>
+	</jms:listener-container>
+	
+	
+	<!-- template needed for producer autowiring -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="cachingConnectionFactory"/>
+	</bean>
+</beans>
