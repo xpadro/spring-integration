@@ -1,4 +1,4 @@
-# HTTP
+# RMI
 Spring Integration RMI support
 #### Version 2
 Examples using Spring Integration 2 release:
