@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>xpadro.spring</groupId>
-    <artifactId>v4-http-xml</artifactId>
+    <artifactId>http-xml</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>v4-http-xml Maven Webapp</name>
+    <name>http-xml Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -76,7 +76,7 @@
     </dependencies>
 
     <build>
-        <finalName>v4-http-xml</finalName>
+        <finalName>http-xml</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

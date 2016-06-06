@@ -1,23 +1,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>xpadro.spring.integration</groupId>
-  <artifactId>v4-http-dsl</artifactId>
-  <packaging>war</packaging>
+  <artifactId>ws-retry</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>v4-http-dsl Maven Webapp</name>
+  <packaging>jar</packaging>
+
+  <name>ws-retry</name>
   <url>http://maven.apache.org</url>
 
   <properties>
-    <spring-version>4.1.3.RELEASE</spring-version>
-    <spring-integration-version>4.1.0.RELEASE</spring-integration-version>
-    <slf4j-version>1.7.5</slf4j-version>
+    <spring-version>4.0.0.RELEASE</spring-version>
+    <spring-integration-version>3.0.0.RELEASE</spring-integration-version>
     <junit-version>4.9</junit-version>
-    <jackson-version>2.3.0</jackson-version>
   </properties>
 
   <dependencies>
     <!-- Spring Framework - Core -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
@@ -25,7 +30,7 @@
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
+      <artifactId>spring-beans</artifactId>
       <version>${spring-version}</version>
     </dependency>
 
@@ -37,28 +42,13 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.integration</groupId>
-      <artifactId>spring-integration-http</artifactId>
+      <artifactId>spring-integration-ws</artifactId>
       <version>${spring-integration-version}</version>
     </dependency>
-
-    <!-- Spring Integration - Java DSL -->
     <dependency>
       <groupId>org.springframework.integration</groupId>
-      <artifactId>spring-integration-java-dsl</artifactId>
-      <version>1.0.0.RELEASE</version>
-    </dependency>
-
-    <!-- JSON -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-      <version>${jackson-version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>${jackson-version}</version>
+      <artifactId>spring-integration-mongodb</artifactId>
+      <version>${spring-integration-version}</version>
     </dependency>
 
     <!-- Testing -->
@@ -75,28 +65,32 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>${slf4j-version}</version>
+      <version>1.7.2</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
-      <version>${slf4j-version}</version>
+      <version>1.7.2</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.16</version>
     </dependency>
   </dependencies>
 
 
   <build>
-    <finalName>v4-http-dsl</finalName>
+    <finalName>ws-retry</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
     </plugins>

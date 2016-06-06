@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>xpadro.spring.integration</groupId>
-  <artifactId>v4-http-dsl7</artifactId>
+  <artifactId>http-dsl</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>v4-http-dsl7 Maven Webapp</name>
+  <name>http-dsl Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -63,6 +63,12 @@
 
     <!-- Testing -->
     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring-version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit-version}</version>
@@ -84,13 +90,13 @@
 
 
   <build>
-    <finalName>v4-http-dsl7</finalName>
+    <finalName>http-dsl</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
