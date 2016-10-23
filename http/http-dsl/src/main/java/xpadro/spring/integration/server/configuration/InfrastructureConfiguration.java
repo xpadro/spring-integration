@@ -30,7 +30,6 @@ public class InfrastructureConfiguration {
 
 	@Bean
 	public IntegrationFlow httpPostPutFlow() {
-		return null;
 		return IntegrationFlows.from(httpPostPutGate()).channel("routeRequest").route("headers.http_requestMethod",
 				 m -> m.prefix("http").suffix("Channel")
                  .channelMapping("PUT", "Put")
