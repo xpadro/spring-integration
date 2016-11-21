@@ -5,6 +5,8 @@ Samples of different Spring Integration modules (jms, batch, integration). These
 
 * [WEB SERVICES] - Examples using Spring Integration Web Services support.
 
+* [MONGO DB] - Integration with a MongoDB database.
+
 * [RMI] - Processing of messages over RMI.
 
 * [SPRING JMS] - Although not a direct part of the Spring Integration project, it is included in the certification guide. For this reason, it is appropriate to include this module in this repository.
@@ -18,6 +20,7 @@ Inside each section there is another readme file with a list of all related proj
    [WEB SERVICES]: https://github.com/xpadro/spring-integration/tree/master/webservices
    [SPRING JMS]: https://github.com/xpadro/spring-integration/tree/master/spring-jms
    [HTTP]: https://github.com/xpadro/spring-integration/tree/master/http
+   [MONGO DB]: https://github.com/xpadro/spring-integration/tree/master/mongodb
    [RMI]: https://github.com/xpadro/spring-integration/tree/master/rmi
    [FILE]: https://github.com/xpadro/spring-integration/tree/master/file
    [GENERIC]: https://github.com/xpadro/spring-integration/tree/master/generic
