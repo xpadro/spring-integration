@@ -4,7 +4,7 @@ Spring Integration MongoDB support
 Examples using Spring Integration 4 release:
 
 * [mongo-basic] - Example with Java DSL on how to configure MongoDB outbound and inbound channel adapters.
-  * Blog post: 
+  * Blog post: http://xpadro.blogspot.com.es/2016/11/spring-integration-mongodb-adapters.html
 
 
    [mongo-basic]: https://github.com/xpadro/spring-integration/tree/master/mongodb/mongo-basic
