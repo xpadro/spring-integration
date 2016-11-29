@@ -39,7 +39,6 @@ public class JavaConfigQueryConfiguration {
     public MessageHandler mongodbOutbound(MongoDbFactory mongo) {
         MongoDbExecutor mongoDbExecutor = new MongoDbExecutor(mongo);
         mongoDbExecutor.setCollectionNameExpression(new LiteralExpression("person"));
-//        mongoDbExecutor.setMongoDbQuery("{msg: '3'}");
         mongoDbExecutor.setMongoDbQueryExpression("payload.data");
         mongoDbExecutor.setExpectSingleResult(true);
         mongoDbExecutor.setEntityClass(Person.class);
