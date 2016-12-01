@@ -37,6 +37,8 @@ public class MongoDbExecutor implements InitializingBean, BeanFactoryAware {
 
     private volatile Expression mongoDbQueryExpression;
 
+    private volatile Integer maxResults;
+
     private final MongoOperations mongoTemplate;
 
     private volatile boolean expectSingleResult = false;
@@ -77,6 +79,10 @@ public class MongoDbExecutor implements InitializingBean, BeanFactoryAware {
         this.mongoDbQueryExpression = PARSER.parseExpression(mongoDbQueryExpression);
     }
 
+    public void setMaxResults(int maxResults) {
+        this.maxResults = maxResults;
+    }
+
     public void setExpectSingleResult(boolean expectSingleResult) {
         this.expectSingleResult = expectSingleResult;
     }
@@ -101,6 +107,10 @@ public class MongoDbExecutor implements InitializingBean, BeanFactoryAware {
             result = this.mongoTemplate.findOne(query, this.entityClass, collectionName);
         }
         else {
+            if (this.maxResults != null) {
+                query.limit(this.maxResults);
+            }
+
             List<?> results = this.mongoTemplate.find(query, this.entityClass, collectionName);
 
             if (!CollectionUtils.isEmpty(results)) {

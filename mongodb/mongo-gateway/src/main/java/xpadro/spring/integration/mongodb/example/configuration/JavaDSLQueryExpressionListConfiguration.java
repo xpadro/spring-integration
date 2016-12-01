@@ -46,6 +46,7 @@ public class JavaDSLQueryExpressionListConfiguration {
         return MongoDb.outboundGateway(mongo)
                 .queryExpression("payload.data")
                 .collectionNameExpression(new LiteralExpression("person"))
-                .entityClass(Person.class);
+                .entityClass(Person.class)
+                .maxResults(2);
     }
 }

@@ -48,6 +48,11 @@ public class MongoDbOutboundGatewaySpec extends MessageHandlerSpec<MongoDbOutbou
         return this;
     }
 
+    public MongoDbOutboundGatewaySpec maxResults(int maxResults) {
+        this.mongoDbExecutor.setMaxResults(maxResults);
+        return this;
+    }
+
     public MongoDbOutboundGatewaySpec collectionNameExpression(Expression collectionNameExpression) {
         this.mongoDbExecutor.setCollectionNameExpression(collectionNameExpression);
         return this;
