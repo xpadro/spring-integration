@@ -23,6 +23,8 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 
 /**
+ * Executes MongoDb operations and puts the result as a payload of the output message
+ *
  * @author Xavier Padró
  */
 public class MongoDbExecutor implements InitializingBean, BeanFactoryAware {

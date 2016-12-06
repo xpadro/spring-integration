@@ -4,6 +4,8 @@ import org.springframework.beans.factory.config.AbstractFactoryBean;
 import org.springframework.messaging.MessageHandler;
 
 /**
+ * Creates instances of {@link MongoDbOutboundGateway}
+ *
  * @author Xavier Padró
  */
 public class MongoDbOutboundGatewayFactoryBean extends AbstractFactoryBean<MessageHandler> {

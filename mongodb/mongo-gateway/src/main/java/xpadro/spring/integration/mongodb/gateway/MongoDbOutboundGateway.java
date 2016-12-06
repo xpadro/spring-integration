@@ -5,6 +5,8 @@ import org.springframework.messaging.Message;
 import org.springframework.util.Assert;
 
 /**
+ * Makes outbound operations to query a MongoDb database using a {@link MongoDbExecutor}
+ *
  * @author Xavier Padró
  */
 public class MongoDbOutboundGateway extends AbstractReplyProducingMessageHandler {

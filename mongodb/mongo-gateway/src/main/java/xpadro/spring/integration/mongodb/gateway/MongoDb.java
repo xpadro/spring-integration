@@ -4,6 +4,8 @@ import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 /**
+ * Factory class for building MongoDb components
+ *
  * @author Xavier Padró
  */
 public class MongoDb {

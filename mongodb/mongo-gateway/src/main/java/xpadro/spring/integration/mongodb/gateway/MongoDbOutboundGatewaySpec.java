@@ -10,6 +10,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
+ * A {@link MessageHandlerSpec} extension for the MongoDb Outbound endpoint {@link MongoDbOutboundGateway}
+ *
  * @author Xavier Padró
  */
 public class MongoDbOutboundGatewaySpec extends MessageHandlerSpec<MongoDbOutboundGatewaySpec, MongoDbOutboundGateway> implements ComponentsRegistration {
