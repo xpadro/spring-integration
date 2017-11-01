@@ -4,16 +4,16 @@ Spring JMS Examples
 Examples using Spring 4 release:
 
 * [jms-boot-javaconfig] - A simple example using annotated JMS listeners using no XML configuration. Spring Boot automatically configures the project based on dependencies included in the classpath.
-  * Blog post: http://xpadro.blogspot.com/2015/04/configure-spring-jms-application-with.html
+  * Blog post: http://xpadro.com/2015/04/configure-spring-jms-application-with.html
 
 #### Version 3
 Examples using Spring 3 release:
 
 * [jms-basic] - Shows how to configure a basic Spring JMS application, with examples on how to send and receive messages using point-to-point messaging (queues) and publish-subscribe messaging (topics).
-  * Blog post: http://xpadro.blogspot.com.es/2013/07/introduction-to-messaging-with-spring.html
+  * Blog post: http://xpadro.com/2013/07/introduction-to-messaging-with-spring.html
  
 * [jms-tx] - Contains examples reproducing the problems related to message processing and how to solve them with local JMS transactions.
-  * Blog post: http://xpadro.blogspot.com.es/2013/08/spring-jms-processing-messages-within.html
+  * Blog post: http://xpadro.com/2013/08/spring-jms-processing-messages-within.html
 
 
 
