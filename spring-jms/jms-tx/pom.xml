@@ -10,7 +10,7 @@
   <name>jms-tx</name>
 
   <properties>
-    <spring.version>3.2.3.RELEASE</spring.version>
+    <spring.version>5.2.7.RELEASE</spring.version>
     <log4j.version>1.2.14</log4j.version>
     <slf4j.version>1.6.1</slf4j.version>
     <hsqldb.version>1.8.0.10</hsqldb.version>
