@@ -11,7 +11,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <spring-version>3.2.4.RELEASE</spring-version>
+    <spring-version>5.2.7.RELEASE</spring-version>
     <spring-integration-version>2.0.4.RELEASE</spring-integration-version>
     <slf4j-version>1.7.5</slf4j-version>
     <junit-version>4.9</junit-version>
