@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.integration.Message;
 import org.springframework.integration.MessageHandlingException;
 import org.springframework.integration.endpoint.AbstractEndpoint;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import xpadro.spring.integration.data.RequestData;
 import xpadro.spring.integration.types.ClientDataRequest;
 import xpadro.spring.integration.types.ClientDataResponse;
 
-@Component("clientServiceActivator")
+@Service
 public class ClientServiceActivator {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
